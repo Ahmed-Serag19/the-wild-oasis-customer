@@ -1,7 +1,6 @@
+import Spinner from "@/app/_components/Spinner";
 const loading = () => {
-  return (
-    <div className="flex justify-center items-center min-h-96">Loading....</div>
-  );
+  return <Spinner />;
 };
 
 export default loading;

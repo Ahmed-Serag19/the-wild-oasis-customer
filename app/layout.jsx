@@ -17,8 +17,6 @@ export const metadata = {
     "Luxurious cabin hotel, located in the heart of the Italian Dolomites, surrounded by beautiful mountains and dark forests",
 };
 
-console.log(josefinSans);
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

@@ -6,17 +6,17 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 function Header() {
-  // const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     setIsScrolled(window.scrollY > 10);
-  //   };
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
 
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header
@@ -24,6 +24,8 @@ function Header() {
         pathname !== "/"
           ? "border-primary-900 "
           : "bg-transparent border-transparent"
+      } ${
+        isScrolled ? "bg-primary-900 border-primary-800" : ""
       } text-primary-100 border-b  px-8 py-5 sticky z-20 top-0 left-0 right-0 transition-colors duration-300`}
     >
       <div className="flex justify-between items-center max-w-7xl mx-auto">
