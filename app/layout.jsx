@@ -1,6 +1,7 @@
-import "@/app/_styles/globals.css";
+import "./_styles/globals.css";
 import { Josefin_Sans } from "next/font/google";
 import Header from "./_components/Header";
+import { ReservationProvider } from "./_components/ReservationContext";
 
 const josefinSans = Josefin_Sans({
   subsets: ["latin"],
@@ -25,7 +26,9 @@ export default function RootLayout({ children }) {
       >
         <Header />
         <div className="px-8 flex-1 py-12 grid">
-          <main className="max-w-7xl mx-auto w-full">{children}</main>
+          <ReservationProvider>
+            <main className="max-w-7xl mx-auto w-full">{children}</main>
+          </ReservationProvider>
         </div>
         <footer className="flex justify-center items-center h-20 bg-primary-950 border-t border-primary-900">
           Fake footer

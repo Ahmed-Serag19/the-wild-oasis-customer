@@ -8,9 +8,18 @@ const nextConfig = {
         port: "",
         pathname: "/storage/v1/object/public/cabin-images/**",
       },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        port: "",
+        pathname: "/a/**",
+      },
     ],
   },
-  output: "export",
+  // output: "export",
+  // images: {
+  //   unoptimized: true,
+  // },
 };
 
 export default nextConfig;

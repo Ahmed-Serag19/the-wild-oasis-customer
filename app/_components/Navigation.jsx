@@ -1,6 +1,10 @@
+import Image from "next/image";
+import { auth } from "../_lib/auth";
 import NavLink from "./NavLink";
 
-const Navigation = () => {
+const Navigation = async () => {
+  const session = await auth();
+  const user = session?.user;
   return (
     <nav>
       <div className="w-full pe-20 lg:pe-32 flex items-center justify-between ps-10">
@@ -16,20 +20,32 @@ const Navigation = () => {
           </li>
           <li>
             <NavLink
-              href="/account"
-              className="hover:text-accent-400"
-              activeClassName="text-accent-400"
-            >
-              Account
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
               href="/about"
               className="hover:text-accent-400"
               activeClassName="text-accent-400"
             >
               About us
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              href="/account"
+              className="hover:text-accent-400 flex items-center gap-2"
+              activeClassName="text-accent-400"
+            >
+              {user ? (
+                <Image
+                  src={user?.image}
+                  alt="User profile picture"
+                  width={34}
+                  height={34}
+                  className="rounded-full"
+                  referrerPolicy="no-referrer"
+                />
+              ) : (
+                ""
+              )}
+              {user?.name || "Account"}
             </NavLink>
           </li>
         </ul>
