@@ -1,7 +1,8 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
-import { updateGuest } from "./data-service";
+import { deleteBooking, updateGuest } from "./data-service";
 
 export const signInAction = async () => {
   await signIn("google", { redirectTo: "/account" });
@@ -31,6 +32,11 @@ export const updateGuestAction = async (formData) => {
     nationality,
     countryFlag,
   };
-  console.log(updatedFields);
   await updateGuest(guestId, updatedFields);
+  revalidatePath("/account/profile");
+};
+
+export const deleteBookingAction = async (bookingId) => {
+  await deleteBooking(bookingId);
+  revalidatePath("/account/reservations");
 };
