@@ -1,4 +1,4 @@
-import { getBookedDatesByCabinId, getCabin } from "@/app/_lib/data-service";
+import { getBookedDatesByCabinId, getCabin } from "../../../_lib/data-service";
 
 export const GET = async (req, { params }) => {
   const { cabinId } = params;
@@ -13,5 +13,5 @@ export const GET = async (req, { params }) => {
     console.error("Error fetching cabin:", error);
     return Response.json({ error: "Cabin not found" }, { status: 404 });
   }
-  return Response.json({ test: "test" });
+  // return Response.json({ test: "test" });
 };
