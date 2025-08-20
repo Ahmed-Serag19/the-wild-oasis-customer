@@ -9,16 +9,16 @@ const Navigation = async () => {
     <nav>
       <div className="w-full pe-20 lg:pe-32 flex items-center justify-between ps-10">
         <ul className="flex gap-8 font-[500]">
-          <li>
+          <li className="items-center justify-center flex">
             <NavLink
               href="/cabins"
-              className="hover:text-accent-400"
+              className="hover:text-accent-400 "
               activeClassName="text-accent-400"
             >
               Cabins
             </NavLink>
           </li>
-          <li>
+          <li className="items-center justify-center flex">
             <NavLink
               href="/about"
               className="hover:text-accent-400"
@@ -27,10 +27,10 @@ const Navigation = async () => {
               About us
             </NavLink>
           </li>
-          <li>
+          <li className="items-center justify-center flex">
             <NavLink
               href="/account"
-              className="hover:text-accent-400 flex items-center gap-2"
+              className="hover:text-accent-400 flex items-center gap-2  justify-center"
               activeClassName="text-accent-400"
             >
               {user ? (

@@ -1,7 +1,8 @@
 "use client";
 
 import { updateGuestAction } from "../_lib/actions";
-import { useFormStatus } from "react-dom";
+import Image from "next/image";
+import FormButton from "./FormButton";
 const UpdateProfileForm = ({ children, guest }) => {
   const { fullName, email, countryFlag, id, nationalID } = guest;
 
@@ -44,9 +45,11 @@ const UpdateProfileForm = ({ children, guest }) => {
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <label htmlFor="nationality">Where are you from?</label>
-            <img
-              src={countryFlag || null}
+            <Image
+              src={countryFlag || ""}
               alt="Country flag"
+              width={20}
+              height={20}
               className="h-5 rounded-sm"
             />
           </div>
@@ -63,22 +66,10 @@ const UpdateProfileForm = ({ children, guest }) => {
         </div>
 
         <div className="flex justify-end items-center gap-6">
-          <Button />
+          <FormButton />
         </div>
       </form>
     </div>
-  );
-};
-
-const Button = () => {
-  const { pending } = useFormStatus();
-  return (
-    <button
-      disabled={pending}
-      className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300"
-    >
-      {pending ? "Updating..." : "Update profile"}
-    </button>
   );
 };
 

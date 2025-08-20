@@ -1,10 +1,28 @@
 "use client";
 
 import Image from "next/image";
+import { useReservation } from "./ReservationContext";
+import { differenceInDays } from "date-fns";
+import { createReservationAction } from "../_lib/actions";
 
 const ReservationForm = ({ cabin, user }) => {
-  // CHANGE
-  const { maxCapacity } = cabin;
+  const { maxCapacity, regularPrice, discount, id } = cabin;
+  const { range, resetRange } = useReservation();
+  const startDate = range.from;
+  const endDate = range.to;
+  const numNights = differenceInDays(endDate, startDate);
+  const cabinPrice = numNights * (regularPrice - discount);
+  const { guestId } = user;
+  const bookingData = {
+    startDate,
+    endDate,
+    numNights,
+    cabinPrice,
+    cabinId: id,
+    guestId,
+    status: "unconfirmed",
+  };
+  const createBookingWithData = createReservationAction.bind(null, bookingData);
 
   return (
     <div className="scale-[1.01]">
@@ -24,7 +42,13 @@ const ReservationForm = ({ cabin, user }) => {
         </div>
       </div>
 
-      <form className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col">
+      <form
+        action={(formData) => {
+          createBookingWithData(formData);
+          resetRange();
+        }}
+        className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col"
+      >
         <div className="space-y-2">
           <label htmlFor="numGuests">How many guests?</label>
           <select

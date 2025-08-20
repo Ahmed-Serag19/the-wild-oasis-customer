@@ -1,6 +1,6 @@
-import ReservationCard from "../../_components/ReservationCard";
 import { auth } from "../../_lib/auth";
 import { getBookings } from "../../_lib/data-service";
+import ReservationList from "../../_components/ReservationList";
 
 export const metadata = {
   title: "Reservations",
@@ -9,7 +9,6 @@ const Page = async () => {
   const session = await auth();
   const guestId = session?.user?.guestId;
   const bookings = await getBookings(guestId);
-  console.log(bookings);
 
   return (
     <div>
@@ -25,11 +24,7 @@ const Page = async () => {
           </a>
         </p>
       ) : (
-        <ul className="space-y-6">
-          {bookings.map((booking) => (
-            <ReservationCard booking={booking} key={booking.id} />
-          ))}
-        </ul>
+        <ReservationList bookings={bookings} />
       )}
     </div>
   );

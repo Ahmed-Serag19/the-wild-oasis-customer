@@ -1,5 +1,5 @@
-function Spinner() {
-  return <div className='spinner'></div>;
-}
+const Spinner = () => {
+  return <div className="spinner"></div>;
+};
 
 export default Spinner;
