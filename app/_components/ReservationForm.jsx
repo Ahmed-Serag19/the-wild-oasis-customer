@@ -26,19 +26,19 @@ const ReservationForm = ({ cabin, user }) => {
 
   return (
     <div className="scale-[1.01]">
-      <div className="bg-primary-800 text-primary-300 px-16 py-2 flex justify-between items-center">
-        <p>Logged in as</p>
+      <div className="bg-primary-800 text-primary-300 px-4 sm:px-8 lg:px-16 py-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0">
+        <p className="text-sm sm:text-base">Logged in as</p>
 
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-2 sm:gap-4 items-center">
           <Image
             referrerPolicy="no-referrer"
-            className="h-8 rounded-full"
+            className="h-6 w-6 sm:h-8 sm:w-8 rounded-full"
             src={user?.image}
             alt={user?.name}
             width={32}
             height={32}
           />
-          <p>{user.name}</p>
+          <p className="text-sm sm:text-base">{user.name}</p>
         </div>
       </div>
 
@@ -47,7 +47,7 @@ const ReservationForm = ({ cabin, user }) => {
           createBookingWithData(formData);
           resetRange();
         }}
-        className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col"
+        className="bg-primary-900 py-6 sm:py-8 lg:py-10 px-4 sm:px-8 lg:px-16 text-base sm:text-lg flex gap-4 sm:gap-5 flex-col"
       >
         <div className="space-y-2">
           <label htmlFor="numGuests">How many guests?</label>
@@ -80,10 +80,12 @@ const ReservationForm = ({ cabin, user }) => {
           />
         </div>
 
-        <div className="flex justify-end items-center gap-6">
-          <p className="text-primary-300 text-base">Start by selecting dates</p>
+        <div className="flex flex-col sm:flex-row justify-end items-center gap-4 sm:gap-6">
+          <p className="text-primary-300 text-sm sm:text-base">
+            Start by selecting dates
+          </p>
 
-          <button className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300">
+          <button className="bg-accent-500 px-6 sm:px-8 py-3 sm:py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300 text-sm sm:text-base w-full sm:w-auto">
             Reserve now
           </button>
         </div>

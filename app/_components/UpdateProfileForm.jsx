@@ -8,17 +8,17 @@ const UpdateProfileForm = ({ children, guest }) => {
 
   return (
     <div>
-      <h2 className="font-semibold text-2xl text-accent-400 mb-4">
+      <h2 className="font-semibold text-xl sm:text-2xl text-accent-400 mb-4">
         Update your guest profile
       </h2>
 
-      <p className="text-lg mb-8 text-primary-200">
+      <p className="text-base sm:text-lg mb-6 sm:mb-8 text-primary-200">
         Providing the following information will make your check-in process
         faster and smoother. See you soon!
       </p>
 
       <form
-        className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
+        className="bg-primary-900 py-6 sm:py-8 px-4 sm:px-8 lg:px-12 text-base sm:text-lg flex gap-4 sm:gap-6 flex-col"
         action={updateGuestAction}
       >
         <input type="hidden" name="guestId" defaultValue={id} />
@@ -43,14 +43,14 @@ const UpdateProfileForm = ({ children, guest }) => {
         </div>
 
         <div className="space-y-2">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
             <label htmlFor="nationality">Where are you from?</label>
             <Image
               src={countryFlag || ""}
               alt="Country flag"
               width={20}
               height={20}
-              className="h-5 rounded-sm"
+              className="h-5 rounded-sm self-start sm:self-auto"
             />
           </div>
           {children}
@@ -65,7 +65,7 @@ const UpdateProfileForm = ({ children, guest }) => {
           />
         </div>
 
-        <div className="flex justify-end items-center gap-6">
+        <div className="flex justify-end items-center gap-4 sm:gap-6">
           <FormButton />
         </div>
       </form>
